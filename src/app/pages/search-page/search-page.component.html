@@ -1,0 +1,36 @@
+<div class="w-full flex flex-col justify-center items-center space-y-10">
+
+  <!-- Search Box Start -->
+  <div class="border-2 border-black rounded-full flex flex-row w-6/12 text-xl shadow-sm">
+    <input #searchBox type="text" placeholder="Search..."
+      class="peer block min-h-[auto] w-full rounded border-0 bg-transparent py-2 px-5 leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-black dark:placeholder:text-black " />
+    <button (click)=" handlesearch(searchBox)"
+      class="bg-black rounded-r-full text-lg text-white font-semibold px-10">Search</button>
+  </div><!-- Search Box End  -->
+
+  <div>{{ title }}</div>
+
+  <div *ngIf="!isLoading" class=" h-full grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2  gap-4 my-5">
+    <div *ngFor='let phone of phones' class=" w-full h-full ">
+
+      <!-- Phone Search Card Start-->
+      <div (click)="handleSearchCardClick(phone.slug)"
+        class=" border h-24 rounded-lg shadow-sm flex flex-row justify-between hover:cursor-pointer ">
+        <img src="{{ phone.image }}" height="full" class="p-2">
+        <div class="flex flex-col justify-between items-end py-2 px-3">
+          <div class="text-lg font-bold">{{ phone.phone_name }}</div>
+          <div class="text-base font-medium">{{ phone.brand }}</div>
+        </div>
+      </div> <!-- Phone Search Card End-->
+
+    </div>
+
+    <div *ngIf="isLoading" class="flex flex-row h-full items-center justify-center ">
+      Loading...
+    </div>
+  </div>
+
+
+
+
+</div>

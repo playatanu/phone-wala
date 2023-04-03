@@ -1,0 +1,52 @@
+<div class="flex flex-col justify-center items-center w-full space-y-5">
+  <div *ngIf="!isLoading" class="border rounded-md w-6/12  flex flex-row">
+    <img src="{{ phone.thumbnail }}" height="full" class="p-2">
+
+    <div class="w-full flex flex-col p-5 justify-between">
+      <div class="flex flex-row justify-between">
+
+        <div class="flex flex-col">
+          <div class="text-3xl font-bold"> {{ phone.phone_name }}</div>
+          <div class="text-base font-medium"> {{ phone.brand }}</div>
+        </div>
+
+        <div class="text-base font-semibold"> {{ phone.release_date }}</div>
+      </div>
+
+      <div class="flex flex-col">
+        <div class="text-base font-semibold"> {{ phone.os }}</div>
+        <div class="text-base font-semibold"> {{ phone.storage }}</div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+
+  <div *ngIf="!isLoading" class="w-6/12 h-full grid grid-cols-1 gap-4 border rounded-md p-5">
+    <div *ngFor='let specification of phone.specifications' class=" w-full h-max">
+
+      <div class="font-semibold text-xl border-b ">{{ specification.title }}</div>
+      <div class=" w-full h-max grid grid-cols-2 gap-4 py-5">
+
+        <div *ngFor='let specs of specification.specs' class="w-full h-full ">
+
+          <div class="font-medium text-lg">{{ specs.key }}</div>
+
+          <div *ngFor='let val of specs.val' class=" w-full h-min">
+            <div class="w-full">val {{ val }}</div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
+  <div *ngIf="isLoading">Loading...</div>
+
+</div>
